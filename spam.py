@@ -26,7 +26,7 @@ sonbu = None
 def rs(tkn, v, proxy, sw):
     headers = {"Authorization": tkn, "User-Agent": generate_user_agent()}
     try:
-        r = session.patch(f"https://canary.discord.com/api/v7/guilds/{sw}/vanity-url", json={"code": v}, headers=headers, proxies={"https": proxy}, timeout=3)
+        r = session.patch(f"https://discord.com/api/v7/guilds/{sw}/vanity-url", json={"code": v}, headers=headers, proxies={"https": proxy}, timeout=3)
         if r.status_code == 200:
             Logger.succ += 1
             Logger.Print(f"URL ALINDI {v}")
@@ -37,7 +37,7 @@ def rs(tkn, v, proxy, sw):
         Logger.proxyError += 1
 
 def spam(v, proxy):
-    r = session.get(f"https://canary.discord.com/api/v7/invites/{v}?with_counts=true&with_expiration=true", proxies={"https": proxy}, timeout=3)
+    r = session.get(f"https://discord.com/api/v7/invites/{v}?with_counts=true&with_expiration=true", proxies={"https": proxy}, timeout=3)
     return r.status_code
 
 def check():
